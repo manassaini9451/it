@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Twitter, Linkedin, Github, Youtube, Instagram, Facebook, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Twitter, Linkedin, Github, Youtube, Instagram, Facebook, ArrowRight, Globe } from 'lucide-react';
 import { useState } from 'react';
 import api from '@/lib/api';
 

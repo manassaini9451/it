@@ -34,8 +34,7 @@ async function bootstrap() {
   app.useWebSocketAdapter(new IoAdapter(app));
   const swaggerConfig = new DocumentBuilder().setTitle('SEO Platform API').setVersion('1.0').addBearerAuth({type:'http',scheme:'bearer',bearerFormat:'JWT'},'JWT-auth').build();
   SwaggerModule.setup('api/docs', app, SwaggerModule.createDocument(app, swaggerConfig));
-  await app.listen(port);
-  console.log(`🚀 API: http://localhost:${port}/api`);
-  console.log(`📚 Docs: http://localhost:${port}/api/docs`);
+  await app.listen(port, '0.0.0.0');
+  console.log(`🚀 Server running on port ${port}`);
 }
 bootstrap();
