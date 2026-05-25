@@ -18,14 +18,12 @@ async function bootstrap() {
   const port = config.get('PORT', 4000);
   app.use(compression());
   app.use(cookieParser());
-  app.enableCors({
-    origin: [config.get('FRONTEND_URL', 'http://localhost:3000'), 'http://localhost:3000'],
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Requested-With'],
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-  });
+ app.enableCors({
+  origin: true,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Requested-With'],
+});
   app.setGlobalPrefix('api');
   app.enableVersioning({ type: VersioningType.URI });
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
@@ -35,6 +33,6 @@ async function bootstrap() {
   const swaggerConfig = new DocumentBuilder().setTitle('SEO Platform API').setVersion('1.0').addBearerAuth({type:'http',scheme:'bearer',bearerFormat:'JWT'},'JWT-auth').build();
   SwaggerModule.setup('api/docs', app, SwaggerModule.createDocument(app, swaggerConfig));
   await app.listen(port, '0.0.0.0');
-  console.log(`🚀 Server running on port ${port}`);
+  console.log(`🚀 Server running on port ${port}`); 
 }
 bootstrap();
