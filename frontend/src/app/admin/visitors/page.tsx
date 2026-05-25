@@ -66,10 +66,14 @@ function DownloadModal({ onClose }: { onClose: () => void }) {
       }
 
       const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api'}/v1/visitors/export?from=${from}&to=${to}`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+    const res = await fetch(
+  `${process.env.NEXT_PUBLIC_API_URL}/v1/visitors/export?from=${from}&to=${to}`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  },
+);
 
       if (!res.ok) throw new Error('Export failed');
 
