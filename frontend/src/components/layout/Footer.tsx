@@ -67,7 +67,7 @@ export default function Footer({ general }: { general?: any }) {
             </div>
             <div className="flex items-center gap-2 mt-5">
               {Object.entries(socialLinks).filter(([,v])=>v).slice(0,5).map(([platform, url]) => {
-                const Icon = SOCIAL_ICONS[platform] || Globe;
+                const Icon = SOCIAL_ICONS[platform];
                 return <a key={platform} href={url as string} target="_blank" rel="noopener noreferrer" className="h-9 w-9 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all"><Icon className="h-4 w-4"/></a>;
               })}
               {/* Fallback socials if none in DB */}
